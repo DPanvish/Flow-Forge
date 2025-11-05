@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
+
 
 :root{
   --color-bg-primary: #FFFFFF;
@@ -25,5 +27,21 @@
 body{
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Apply Fira Code to code elements */
+code, pre, .font-mono {
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+/* Font weight examples */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Font style examples */
+.font-italic { font-style: italic; }
