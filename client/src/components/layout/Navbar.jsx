@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTheme } from '../../contexts/ThemeContext.jsx'
+import { Link } from 'react-router-dom'
 
 // Helper component for SVG icons
 // We're putting this in the same file for simplicity.
@@ -62,24 +63,24 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo Branding */}
           <div className="flex item-center">
-            <a href='/' className="shrink-0">
+            <Link to='/' className="shrink-0">
               <span className="text-2xl font-bold text-accent-primary">
                 Flow Forge
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navLinks.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="rounded-md px-3 py-2 text-sm font-medium text-text-secondary hover:bg-border hover:text-text-primary cursor-pointer"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -100,7 +101,7 @@ const Navbar = () => {
               {/* Auth Button */}
               <button
                 type="button"
-                className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-accent-primary cursor-pointer" 
+                className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-accent-primary cursor-pointer" 
               >
                 Sign Up
               </button>
@@ -128,13 +129,13 @@ const Navbar = () => {
         <div className="md:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             {navLinks.map((items) => (
-              <a
+              <Link
                 key={items.name}
-                href={items.href}
+                to={items.href}
                 className="block rounded-md px-3 py-2 text-base font-medium text-text-secondary hover:bg-border hover:text-text-primary"
               >
                 {items.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -143,7 +144,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between px-4">
               <button
                 type="button"
-                className="w-full rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                className="w-full rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover"
               >
                 Sign Up
               </button>
