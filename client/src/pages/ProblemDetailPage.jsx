@@ -1,10 +1,13 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
-const ProblemDetailPage = () => {
-  const {slug} = useParams();
+// We'll use these later to power the code editor
+// import { MonacoEditor } from '../components/ui/CodeEditor'; 
 
-  // Temporary data
+export default function ProblemDetailPage() {
+  const { slug } = useParams();
+
+  // --- Placeholder Data ---
   const problem = {
     title: 'Two Sum',
     description: "Given an array of integers `nums` and an integer `target`, return *indices of the two numbers such that they add up to `target`*.\n\nYou may assume that each input would have **exactly one solution**, and you may not use the *same* element twice.\n\nYou can return the answer in any order.",
@@ -29,83 +32,84 @@ const ProblemDetailPage = () => {
       'Only one valid answer exists.',
     ],
     starterCode: `function twoSum(nums, target) {\n  // Write your code here\n};`
-  }
+  };
 
   return (
     <div className="flex flex-col lg:flex-row gap-4 h-[calc(100vh-8rem)]">
-      {/* --------Left Column: Problem Description-------- */}
+      
+      {/* ---------- Left Column: Problem Description ---------- */}
       <div className="lg:w-1/2 overflow-y-auto bg-secondary p-6 rounded-lg border border-border">
-        <h1 className="text-2xl font-bold md-4">{problem.title}</h1>
-
+        <h1 className="text-2xl font-bold mb-4">{problem.title}</h1>
+        
         {/* Description */}
         <div 
           className="text-text-secondary mb-6 prose prose-invert max-w-none"
-          dangerouslySetInnerHTML={{__html: problem.description.replace(/\n/g, '<br>')}}
-        >
-          {/* Examples */}
-          <div className="space-y-4 mb-6">
-            {problem.examples.map((example) => (
-              <div key={example.id} className="bg-primary p-4 rounded-md border border-border">
-                <p className="font-medium">Example {example.id}</p>
-                <div className="font-mono bg-border/20 text-text-secondary p-2 mt-2 rounded">
-                  <p><strong>Input:</strong> {example.input}</p>
-                  <p><strong>Output:</strong> {example.output}</p>
-                  {example.explanation && <p><strong>Explanation:</strong> {example.explanation}</p>}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Constraints */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Constraints:</h3>
-            <ul className="list-disc list-inside text-text-secondary space-y-1">
-              {problem.constraints.map((constraint, i) => (
-                <li key={i}><code className="font-mono text-sm">{constraint}</code></li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* --------Right Column: Code Editor-------- */}
-        <div className="lg:w-1/2 flex flex-col">
-          {/* Language Selector */}
-          <div className="mb-2">
-            <select className="bg-secondary border border-border rounded-md px-3 py-2 text-text-primary focus:ring-accent-primary focus:border-accent-primary">
-              <option>JavaScript</option>
-              <option>Python</option>
-              <option>C++</option>
-            </select>
-          </div>
-
-          {/* Code Editor Area */}
-          <div className="grow bg-secondary rounded-lg border border-border overflow-hidden">
-            {/* Monaco Editor */}
-            <textarea
-              className="w-full h-full bg-secondary text-text-primary font-mono outline-none resize-none"
-              defaultValue={problem.starterCode} 
-            />
-
-            {/* Buttons: Output Toogle & Run/Submit */}
-            <div className="flex justify-between items-center mt-4">
-              <button className="px-4 py-2 bg-secondary text-text-primary rounded-lg border border-border hover:bg-border">
-                Console
-              </button>
-
-              <div className="flex gap-4">
-                <button className="px-5 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700">
-                  Run
-                </button>
-                <button className="px-5 py-2 bg-accent-primary text-white font-semibold rounded-lg hover:bg-accent-hover">
-                  Submit
-                </button>
+          dangerouslySetInnerHTML={{ __html: problem.description.replace(/\n/g, '<br>') }} 
+        />
+        
+        {/* Examples */}
+        <div className="space-y-4 mb-6">
+          {problem.examples.map((ex) => (
+            <div key={ex.id} className="bg-primary p-4 rounded-md border border-border">
+              <p className="font-medium">Example {ex.id}:</p>
+              <div className="font-mono bg-border/20 text-text-secondary p-2 mt-2 rounded">
+                <p><strong>Input:</strong> {ex.input}</p>
+                <p><strong>Output:</strong> {ex.output}</p>
+                {ex.explanation && <p><strong>Explanation:</strong> {ex.explanation}</p>}
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Constraints */}
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Constraints:</h3>
+          <ul className="list-disc list-inside text-text-secondary space-y-1">
+            {problem.constraints.map((con, i) => (
+              <li key={i}><code className="font-mono text-sm">{con}</code></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* ---------- Right Column: Code Editor ---------- */}
+      <div className="lg:w-1/2 flex flex-col">
+        
+        {/* Language Selector */}
+        <div className="mb-2">
+          <select className="bg-secondary border border-border rounded-md px-3 py-2 text-text-primary focus:ring-accent-primary focus:border-accent-primary">
+            <option>JavaScript</option>
+            <option>Python</option>
+            <option>C++</option>
+          </select>
+        </div>
+
+        {/* Code Editor Area */}
+        <div className="flex-grow bg-secondary rounded-lg border border-border overflow-hidden">
+          {/* We will put the Monaco Editor here soon */}
+          <textarea
+            className="w-full h-full p-4 bg-secondary text-text-primary font-mono outline-none resize-none"
+            defaultValue={problem.starterCode}
+          />
+        </div>
+
+        {/* Buttons: Output Toggle & Run/Submit */}
+        <div className="flex justify-between items-center mt-4">
+          <button className="px-4 py-2 bg-secondary text-text-primary rounded-lg border border-border hover:bg-border">
+            Console
+          </button>
+          <div className="flex gap-4">
+            <button className="px-5 py-2 bg-transparent text-green-500 font-semibold rounded-lg border-2 border-green-500
+                       hover:bg-green-500 hover:text-white transition-colors focus:outline-none">
+              Run
+            </button>
+            <button className="px-5 py-2 bg-accent-primary text-text-primary font-semibold rounded-lg 
+                       hover:bg-accent-hover transition-colors focus:outline-none">
+              Submit
+            </button>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-export default ProblemDetailPage

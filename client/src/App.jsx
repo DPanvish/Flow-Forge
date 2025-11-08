@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage.jsx'
 import ProblemsPage from './pages/ProblemsPage.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import ProblemDetailPage from './pages/ProblemDetailPage.jsx'
 
 
 
@@ -15,6 +16,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/problems" element={<ProblemsPage />} />
+
+          <Route path="/problems/:slug" element={<ProblemDetailPage />} />
+
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
