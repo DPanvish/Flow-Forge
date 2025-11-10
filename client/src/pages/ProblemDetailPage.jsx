@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-// We'll use these later to power the code editor
-// import { MonacoEditor } from '../components/ui/CodeEditor'; 
+import CodeEditor from '../components/ui/CodeEditor'; 
 
 export default function ProblemDetailPage() {
   const { slug } = useParams();
@@ -33,6 +31,8 @@ export default function ProblemDetailPage() {
     ],
     starterCode: `function twoSum(nums, target) {\n  // Write your code here\n};`
   };
+
+  const [code, setCode] = useState(problem.starterCode);
 
   return (
     <div className="flex flex-col lg:flex-row gap-4 h-[calc(100vh-8rem)]">
@@ -85,11 +85,11 @@ export default function ProblemDetailPage() {
         </div>
 
         {/* Code Editor Area */}
-        <div className="flex-grow bg-secondary rounded-lg border border-border overflow-hidden">
-          {/* We will put the Monaco Editor here soon */}
-          <textarea
-            className="w-full h-full p-4 bg-secondary text-text-primary font-mono outline-none resize-none"
-            defaultValue={problem.starterCode}
+        <div className="grow bg-secondary rounded-lg border border-border overflow-hidden">
+          <CodeEditor
+            value={code}
+            language="javascript"
+            onChange={setCode}
           />
         </div>
 

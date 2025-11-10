@@ -29,7 +29,7 @@ const CodeEditor = ({value, language, onChange}) => {
         fontFamily: 'Fira Code',
       }}
     />
-  )
+  );
 }
 
-export default CodeEditor
+export default CodeEditor;
