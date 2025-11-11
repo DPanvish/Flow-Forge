@@ -4,7 +4,7 @@ import { Editor } from '@monaco-editor/react'
 
 const CodeEditor = ({value, language, onChange}) => {
   const {theme} = useTheme();
-  const editorTheme = theme === "dark" ? "dark" : "light";
+  const editorTheme = theme === "dark" ? "vs-dark" : "light";
 
   const handleEditorChange = (value, event) => {
     if(onChange){
