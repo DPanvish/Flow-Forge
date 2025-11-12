@@ -47,7 +47,7 @@ const LoginPage = () => {
             <div>
               <button
                 type="submit"
-                className="group relative flex w-full justify-center rounded-md border border-transparent bg-accent-primary py-2 px-4 text-sm font-semibold text-white hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2"
+                className="group relative flex w-full justify-center rounded-md border border-border bg-accent-primary py-2 px-4 text-sm font-semibold text-text-primary hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 cursor-pointer"
               >
                 Sign in
               </button>

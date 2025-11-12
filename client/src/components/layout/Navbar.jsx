@@ -63,7 +63,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo Branding */}
           <div className="flex item-center">
-            <Link to='/' className="shrink-0">
+            <Link to='/' className="shrink-0 cursor-pointer">
               <span className="text-2xl font-bold text-accent-primary">
                 Flow Forge
               </span>
@@ -101,7 +101,7 @@ const Navbar = () => {
               {/* Auth Button */}
               <Link
                 to="/signup"
-                className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
+                className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary cursor-pointer"
               >
                 Sign Up
               </Link>
@@ -132,7 +132,7 @@ const Navbar = () => {
               <Link
                 key={items.name}
                 to={items.href}
-                className="block rounded-md px-3 py-2 text-base font-medium text-text-secondary hover:bg-border hover:text-text-primary"
+                className="block rounded-md px-3 py-2 text-base font-medium text-text-secondary hover:bg-border hover:text-text-primary cursor-pointer"
               >
                 {items.name}
               </Link>
@@ -144,7 +144,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between px-4">
               <Link
                 to="/signup"
-                className="w-full text-center rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                className="w-full text-center rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover cursor-pointer"
               >
                 Sign Up
               </Link>
@@ -152,7 +152,7 @@ const Navbar = () => {
               <button
                 onClick={toggleTheme}
                 type="button"
-                className="ml-4 shrink-0 rounded-full bg-primary p-2 text-text-secondary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-primary"
+                className="ml-4 shrink-0 rounded-full bg-primary p-2 text-text-secondary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-primary cursor-pointer"
                 aria-label="Toggle theme"
               >
                 {theme === "light" ? <MoonIcon /> : <SunIcon />}

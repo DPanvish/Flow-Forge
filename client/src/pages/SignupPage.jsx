@@ -42,7 +42,7 @@ const SignupPage = () => {
             <div>
               <button
                 type="submit"
-                className="group relative flex w-full justify-center rounded-md border border-transparent bg-accent-primary py-2 px-4 text-sm font-semibold text-white hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2"
+                className="group relative flex w-full justify-center rounded-md border border-border bg-accent-primary py-2 px-4 text-sm font-semibold text-text-primary hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 cursor-pointer"
               >
                 Create Account
               </button>
@@ -51,7 +51,7 @@ const SignupPage = () => {
 
           <p className="mt-6 text-center text-sm text-text-secondary">
             Already have an account?{' '}
-            <Link to="/login" className="font-medium text-accent-primary hover:text-accent-hover">
+            <Link to="/login" className="font-medium text-accent-primary hover:text-accent-hover cursor-pointer">
               Sign in
             </Link>
           </p>
