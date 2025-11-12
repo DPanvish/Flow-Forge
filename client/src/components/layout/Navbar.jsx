@@ -99,12 +99,12 @@ const Navbar = () => {
               </button>
 
               {/* Auth Button */}
-              <button
-                type="button"
-                className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-accent-primary cursor-pointer" 
+              <Link
+                to="/signup"
+                className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
               >
                 Sign Up
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -142,12 +142,12 @@ const Navbar = () => {
           {/* Mobile Auth & Theme Toggle */}
           <div className="border-t border-border pb-3 pt-4">
             <div className="flex items-center justify-between px-4">
-              <button
-                type="button"
-                className="w-full rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover"
+              <Link
+                to="/signup"
+                className="w-full text-center rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
               >
                 Sign Up
-              </button>
+              </Link>
 
               <button
                 onClick={toggleTheme}
