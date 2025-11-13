@@ -121,7 +121,7 @@ const Navbar = () => {
                 <button
                   onClick={handleLogout}
                   type="button"
-                  className="rounded-md bg-accent-secondary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                  className="rounded-md bg-accent-secondary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover cursor-pointer"
                 >
                   Sign Out
                 </button>
@@ -129,7 +129,7 @@ const Navbar = () => {
                 // If logged out, show Sign Up
                 <Link
                   to="/signup"
-                  className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                  className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover cursor-pointer"
                 >
                   Sign Up
                 </Link>
@@ -178,14 +178,14 @@ const Navbar = () => {
                 <button
                   onClick={handleLogout}
                   type="button"
-                  className="w-full text-center rounded-md bg-accent-secondary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                  className="w-full text-center rounded-md bg-accent-secondary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover"
                 >
                   Sign Out
                 </button>
               ) : (
                 <Link
                   to="/signup"
-                  className="w-full text-center rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                  className="w-full text-center rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Sign Up
