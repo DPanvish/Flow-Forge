@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTheme } from '../../contexts/ThemeContext.jsx'
-import { Link } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext.jsx'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Helper component for SVG icons
 // We're putting this in the same file for simplicity.
@@ -39,6 +40,8 @@ function XIcon() {
 
 const Navbar = () => {
   const {theme, toggleTheme} = useTheme();
+  const {currentUser, logout} = useAuth();
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -48,13 +51,24 @@ const Navbar = () => {
     },
     {
       name: "Dashboard",
-      href: "/dashboard"
+      href: "/dashboard",
+      auth: true
     },
     {
       name: "Discuss",
-      href: "/discuss"
+      href: "/discuss",
+      auth: false
     }
   ];
+
+  const handleLogout = async() => {
+    try {
+      await logout();
+      navigate("/login");
+    } catch (error) {
+      console.error("Failed to log out:", error);
+    }
+  }
 
 
   return (
@@ -74,13 +88,16 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-text-secondary hover:bg-border hover:text-text-primary cursor-pointer"
-                >
-                  {item.name}
-                </Link>
+                // If link requires auth, only show if user is logged in
+                (!item.auth || (item.auth && currentUser)) && (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="rounded-md px-3 py-2 text-sm font-medium text-text-secondary hover:bg-border hover:text-text-primary"
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
           </div>
@@ -99,12 +116,24 @@ const Navbar = () => {
               </button>
 
               {/* Auth Button */}
-              <Link
-                to="/signup"
-                className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary cursor-pointer"
-              >
-                Sign Up
-              </Link>
+              {currentUser ? (
+                // If user is logged in, show Logout
+                <button
+                  onClick={handleLogout}
+                  type="button"
+                  className="rounded-md bg-accent-secondary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                // If logged out, show Sign Up
+                <Link
+                  to="/signup"
+                  className="rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                >
+                  Sign Up
+                </Link>
+              )}
             </div>
           </div>
 
@@ -128,26 +157,40 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-            {navLinks.map((items) => (
-              <Link
-                key={items.name}
-                to={items.href}
-                className="block rounded-md px-3 py-2 text-base font-medium text-text-secondary hover:bg-border hover:text-text-primary cursor-pointer"
-              >
-                {items.name}
-              </Link>
+            {navLinks.map((item) => (
+              (!item.auth || (item.auth && currentUser)) && (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="block rounded-md px-3 py-2 text-base font-medium text-text-secondary hover:bg-border hover:text-text-primary"
+                  onClick={() => setIsMobileMenuOpen(false)} // Close menu on click
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
           </div>
 
           {/* Mobile Auth & Theme Toggle */}
           <div className="border-t border-border pb-3 pt-4">
             <div className="flex items-center justify-between px-4">
-              <Link
-                to="/signup"
-                className="w-full text-center rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-text-primary shadow-sm hover:bg-accent-hover cursor-pointer"
-              >
-                Sign Up
-              </Link>
+              {currentUser ? (
+                <button
+                  onClick={handleLogout}
+                  type="button"
+                  className="w-full text-center rounded-md bg-accent-secondary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <Link
+                  to="/signup"
+                  className="w-full text-center rounded-md bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Sign Up
+                </Link>
+              )}
 
               <button
                 onClick={toggleTheme}
