@@ -3,3 +3,11 @@
 3) Install the Tailwindcss latest from the docs https://tailwindcss.com/docs/installation/using-vite
 4) Install React router "npm install react-router-dom"
 5) Install Monaco Editor "npm install @monaco-editor/react"
+6) Setup the firebase in the firebase console using following steps
+   a) Go to the Firebase Console.
+   b) Click "Add project" and give it a name (like "flowforge-dev").
+   c) Follow the on-screen steps to create the project. You don't need to enable Google Analytics.
+   d) Once in your project, click the </> icon (for "Web") to add a web app.
+   e) Give it a nickname (e.g., "FlowForge Web") and click "Register app".
+   f) Firebase will show you your "firebaseConfig" object (it has apiKey, authDomain, etc.). Copy this object.
+7) Install the firebase in the client "npm install firebase"
